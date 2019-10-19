@@ -20,7 +20,7 @@ const BootcampSchema = new mongoose.Schema(
     website: {
       type: String,
       match: [
-        /((http|ftp|https):\/\/)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/gm,
+        /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
         ,
         'Please use a valid URL with HTTP or HTTPS',
       ],
