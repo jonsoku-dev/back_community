@@ -120,7 +120,7 @@ exports.deleteBootcamp = asyncHandler(async (req, res, next) => {
   if (!bootcamp) {
     return next(err);
   }
-  bootcamp.remove();
+  await bootcamp.remove();
 
   res.status(200).json({ success: true, data: {} });
 });
