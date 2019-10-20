@@ -21,29 +21,31 @@ const BootcampSchema = new mongoose.Schema(
       type: String,
       match: [
         /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/,
+        ,
         'Please use a valid URL with HTTP or HTTPS',
       ],
     },
-    phone: {
-      type: String,
-      maxlength: [20, 'Phone number can not be longer than 20 characters'],
-    },
     email: {
       type: String,
-      match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please add a valid email'],
+      match: [
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
+        'Please add a valid email',
+      ],
     },
     address: {
       type: String,
       required: [true, 'Please add an address'],
     },
     location: {
-      // GeoJSON Point
+      // GeoJSON Point -> mongoose GeoJSON
       type: {
         type: String,
         enum: ['Point'],
+        // required: true,
       },
       coordinates: {
         type: [Number],
+        // required: true,
         index: '2dsphere',
       },
       formattedAddress: String,
@@ -62,7 +64,7 @@ const BootcampSchema = new mongoose.Schema(
     averageRating: {
       type: Number,
       min: [1, 'Rating must be at least 1'],
-      max: [10, 'Rating must can not be more than 10'],
+      max: [10, 'Rating can not be more than 10'],
     },
     averageCost: Number,
     photo: {
@@ -85,19 +87,17 @@ const BootcampSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
   },
   {
+    timestamps: true,
     toJSON: { virtuals: true },
     toObject: { virtuals: true },
   },
 );
 
 // Create bootcamp slug from the name
-BootcampSchema.pre('save', function(next) {
+BootcampSchema.pre('save', function() {
+  console.log('Slugify ran', this.name);
   this.slug = slugify(this.name, { lower: true });
   next();
 });
@@ -115,7 +115,6 @@ BootcampSchema.pre('save', async function(next) {
     zipcode: loc[0].zipcode,
     country: loc[0].countryCode,
   };
-
   // Do not save address in DB
   this.address = undefined;
   next();
@@ -128,7 +127,7 @@ BootcampSchema.pre('remove', async function(next) {
   next();
 });
 
-// Reverse populate with virtuals
+// Revert populate with virtuals
 BootcampSchema.virtual('courses', {
   ref: 'Course',
   localField: '_id',
@@ -136,4 +135,4 @@ BootcampSchema.virtual('courses', {
   justOne: false,
 });
 
-module.exports = mongoose.model('Bootcamp', BootcampSchema);
+module.exports = mongoose.model('BootCamp', BootcampSchema);
