@@ -19,3 +19,9 @@ $ yarn add nodemailer
 https://mailtrap.io
 <br>
 https://nodemailer.com/about/
+
+## mongo-sanitize
+
+https://github.com/vkarpov15/mongo-sanitize#readme
+<br>
+https://github.com/fiznool/express-mongo-sanitize

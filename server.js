@@ -8,18 +8,22 @@ const cookieParser = require('cookie-parser');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
+const mongoSanitize = require('express-mongo-sanitize');
+
 // Load env vars
 dotenv.config({ path: './config/config.env' });
+
 // Connect to database
 connectDB();
+
 // Route files
 const bootcamps = require('./routes/bootcamps');
 const courses = require('./routes/courses');
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const reviews = require('./routes/reviews');
-// Middleware files
 
+// Middleware files
 const app = express();
 
 // Body parser
@@ -35,6 +39,9 @@ if (process.env.NODE_ENV === 'development') {
 
 // File uploading
 app.use(fileupload());
+
+// Sanitize data
+app.use(mongoSanitize());
 
 // Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
