@@ -81,3 +81,27 @@ https://github.com/expressjs/cors
 ```
 $ yarn add cors
 ```
+
+# Documentation & Deploy
+
+## docgen
+
+https://github.com/thedevsaddam/docgen
+
+- 백앤드 작업 시 postman쓸때
+- 브라우저에서 http://localhost:5000/api/v1/bootcamps 와 같은 api에 접속할경우
+
+1. install
+
+   ```bash
+   $ brew tap thedevsaddam/cli https://github.com/thedevsaddam/homebrew-cli.git
+
+   $ brew install docgen
+   ```
+
+2. postman에서 export하기 (export된 파일은 json형식임)
+3. 터미널 열고
+   ```bash
+   $ docgen build -i dc.postman_collection.json -o index.html
+   ```
+4. 생성된 index.html을 프로제트내 public폴더에 놓는다.
