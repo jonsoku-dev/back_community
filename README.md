@@ -105,3 +105,48 @@ https://github.com/thedevsaddam/docgen
    $ docgen build -i dc.postman_collection.json -o index.html
    ```
 4. 생성된 index.html을 프로제트내 public폴더에 놓는다.
+
+## digital ocean
+
+https://www.digitalocean.com/products/droplets/?_campaign=DO_Dev_Awareness_G_Search_B_Generic_Alpha&_adgroup=digital_ocean&_keyword=digital%20ocean&_device=c&_copytype=nonbiz_ad&_adposition=1t1&_medium=brand_sem&_source=google&_dkitrig=&_2dkitrig=&gclid=Cj0KCQjwrrXtBRCKARIsAMbU6bGTuSXcoVZ47dbVbC1ydaGx1JAllxJRWLV0vHK7gB-1x7Z6dhPoyxoaAmkWEALw_wcB
+
+## how to create ssh keys?
+
+https://www.digitalocean.com/docs/droplets/how-to/add-ssh-keys/
+
+```bash
+$ ls ~/.ssh # enter
+$ ssh-keygen # enter
+```
+
+```bash
+Your identification has been saved in /home/username/.ssh/id_rsa.
+Your public key has been saved in /home/username/.ssh/id_rsa.pub.
+The key fingerprint is:
+a9:49:EX:AM:PL:E3:3e:a9:de:4e:77:11:58:b6:90:26 username@203.0.113.0
+The key's randomart image is:
++--[ RSA 2048]----+
+|     ..o         |
+|   E o= .        |
+|    o. o         |
+|        ..       |
+|      ..S        |
+|     o o.        |
+|   =o.+.         |
+|. =++..          |
+|o=++.            |
++-----------------+
+```
+
+```bash
+$ ls ~/.ssh
+# id_rsa id_rsa.pub 가 생성되있을거임
+```
+
+```bash
+$ cat ~/.ssh/id_rsa.pub
+```
+
+## Node.js Deploy
+
+https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
