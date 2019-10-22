@@ -145,8 +145,36 @@ $ ls ~/.ssh
 
 ```bash
 $ cat ~/.ssh/id_rsa.pub
+# 나오는 스트링을 카피
 ```
 
 ## Node.js Deploy
 
 https://gist.github.com/bradtraversy/cd90d1ed3c462fe3bddd11bf8953a896
+
+# Tamastudy API
+
+> Backend API for Application, which is a bootcamp directory webise
+
+## Usage
+
+Rename "config/config.env.env" to "config/config.env" and uupdate the values/settings to your own
+
+## Install Dependencies
+
+```bash
+$ yarn
+```
+
+## Run App
+
+```
+# Run in dev mode
+$ yarn dev
+
+# Run in prod mode
+$ yarn start
+```
+
+- Version: 1.0.0
+- Licence : MIT , Tamastudy
