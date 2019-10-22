@@ -185,6 +185,7 @@ connect server
 
 ```bash
 $ ssh root@[digital ocean IPaddress]
+$ ssh root@206.189.181.179
 ```
 
 node, yarn install
