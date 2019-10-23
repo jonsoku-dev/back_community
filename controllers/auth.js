@@ -4,6 +4,14 @@ const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../utils/sendEmail');
 
+// @desc   Load user
+// @route  GET /api/v1/auth
+// @access Private
+exports.loadUser = asyncHandler(async (req, res, next) => {
+  const user = await User.findById(req.user.id);
+  res.json(user);
+});
+
 // @desc   Register user
 // @route  POST /api/v1/auth/register
 // @access Public
